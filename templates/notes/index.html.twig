@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %} {% block title %}Notes{% endblock %} {% set page
+= 'notes' %} {% block body %}
+
+<h1>Liste de notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Creation</th>
+      <th>Modification</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for note in notes %}
+    <tr>
+      <td>{{ note.id }}</td>
+      <td>{{ note.title }}</td>
+      <td>{{ note.createdAt|date('d/m/Y H:i') }}</td>
+      <td>
+        {% if note.updatedAt is not null %}
+        {{ note.updatedAt|date('d/m/Y H:i') }}
+        {% endif %}
+      </td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
